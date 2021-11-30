@@ -11,6 +11,11 @@ const server = new ApolloServer({
   schema: buildSubgraphSchema([{ typeDefs: userTypes, resolvers: userResolvers }]),
 });
 
-server.listen({ port: process.env.PORT || 5001 }).then((url) => {
-  console.log('Microservicio de usuarios corriendo');
-});
+server
+  .listen({ port: process.env.PORT || 5001 })
+  .then((url) => {
+    console.log('Microservicio de usuarios corriendo');
+  })
+  .catch((e) => {
+    console.log('error', e);
+  });

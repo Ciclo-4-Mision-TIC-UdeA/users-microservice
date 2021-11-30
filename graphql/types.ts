@@ -12,12 +12,17 @@ const userTypes = gql`
     email: String!
     role: Enum_Role!
     profile: Profile
+    author: Author
   }
 
   type Profile @key(fields: "id") {
     id: ID!
     document: String!
     phone: String!
+  }
+
+  extend type Author @key(fields: "id") {
+    id: ID! @external
   }
 
   extend type Query {

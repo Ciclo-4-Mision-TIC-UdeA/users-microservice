@@ -6,7 +6,7 @@ const userTypes = gql`
     USER
   }
 
-  type User {
+  type User @key(fields: "id") {
     id: ID!
     name: String!
     email: String!
@@ -14,13 +14,13 @@ const userTypes = gql`
     profile: Profile
   }
 
-  type Profile {
+  type Profile @key(fields: "id") {
     id: ID!
     document: String!
     phone: String!
   }
 
-  type Query {
+  extend type Query {
     users: [User]
   }
 `;

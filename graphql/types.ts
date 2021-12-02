@@ -6,21 +6,26 @@ const userTypes = gql`
     USER
   }
 
-  type User {
+  type User @key(fields: "id") {
     id: ID!
     name: String!
     email: String!
     role: Enum_Role!
     profile: Profile
+    author: Author
   }
 
-  type Profile {
+  extend type Author @key(fields: "id") {
+    id: ID! @external
+  }
+
+  type Profile @key(fields: "id") {
     id: ID!
     document: String!
     phone: String!
   }
 
-  type Query {
+  extend type Query {
     users: [User]
   }
 `;
